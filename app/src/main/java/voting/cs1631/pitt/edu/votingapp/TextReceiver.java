@@ -27,7 +27,7 @@ public class TextReceiver extends BroadcastReceiver {
             Object[] sms = (Object[]) bundle.get("pdus");
             for (int i = 0; i < sms.length; ++i) {
                 SmsMessage msg = SmsMessage.createFromPdu((byte[]) sms[i]);
-                receiverActivity.addVote(msg.getMessageBody());
+                receiverActivity.addVote(msg.getMessageBody(), msg.getOriginatingAddress());
             }
         }
 

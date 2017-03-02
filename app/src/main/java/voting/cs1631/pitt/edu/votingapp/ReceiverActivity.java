@@ -6,5 +6,5 @@ package voting.cs1631.pitt.edu.votingapp;
 
 public interface ReceiverActivity {
 
-    void addVote(String code);
+    void addVote(String code, String number);
 }

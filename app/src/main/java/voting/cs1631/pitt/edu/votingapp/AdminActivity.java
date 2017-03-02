@@ -9,12 +9,16 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class AdminActivity extends AppCompatActivity implements ReceiverActivity {
 
     private TextView choice1 = null;
     private TextView choice2 = null;
     private TextView choice3 = null;
     private static AdminActivity instance = null;
+    private Set<String> numbers = new HashSet<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +38,13 @@ public class AdminActivity extends AppCompatActivity implements ReceiverActivity
     }
 
     @Override
-    public void addVote(String msg) {
+    public void addVote(String msg, String number) {
+        if(numbers.contains(number)) {
+            return;
+        }
+
+        numbers.add(number);
+
         try {
 
             Integer code = Integer.parseInt(msg);
